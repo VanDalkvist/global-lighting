@@ -1,0 +1,31 @@
+﻿using System.Collections.Generic;
+
+namespace GlobalLighting
+{
+    public class Room : IGeometry
+    {
+        private List<IGeometry> listOfSurfaces;
+
+        public Room(params IGeometry[] surfaces)
+        {
+            listOfSurfaces = new List<IGeometry>();
+            for (int i = 0; i < surfaces.Length; i++)
+                listOfSurfaces.Add(surfaces[i]);
+        }
+
+        public HitPoint Intersect(Vector start, Vector direction)
+        {
+            HitPoint closeHitPoint = null;
+            foreach (var g in listOfSurfaces)
+            {
+                var hp = g.Intersect(start, direction);
+                if (closeHitPoint == null)
+                    closeHitPoint = hp;
+                else
+                    if ((hp != null) && (closeHitPoint.t > hp.t))
+                        closeHitPoint = hp;
+            }
+            return closeHitPoint;
+        }
+    }
+}

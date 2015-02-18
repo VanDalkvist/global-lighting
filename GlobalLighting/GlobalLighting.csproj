@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2AA1627D-32A0-4470-ACCA-44639BB812F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlobalLighting</RootNamespace>
+    <AssemblyName>GlobalLighting</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Material\DiffuseMaterial.cs" />
+    <Compile Include="Core\HitPoint.cs" />
+    <Compile Include="Surfaces\AGeometry.cs" />
+    <Compile Include="Surfaces\IGeomerty.cs" />
+    <Compile Include="Lights\ILightSource.cs" />
+    <Compile Include="Material\IMaterial.cs" />
+    <Compile Include="Lights\LightPoint.cs" />
+    <Compile Include="Material\MirrorMaterial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Radiance.cs" />
+    <Compile Include="Surfaces\Leg.cs" />
+    <Compile Include="Surfaces\Room.cs" />
+    <Compile Include="Utils\Random.cs" />
+    <Compile Include="Surfaces\Scene.cs" />
+    <Compile Include="Core\Size3D.cs" />
+    <Compile Include="Material\SpecularMaterial.cs" />
+    <Compile Include="Surfaces\Sphere.cs" />
+    <Compile Include="Surfaces\Plane.cs" />
+    <Compile Include="Lights\SquareLight.cs" />
+    <Compile Include="Surfaces\Table.cs" />
+    <Compile Include="Core\Vector.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

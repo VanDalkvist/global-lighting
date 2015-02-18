@@ -1,0 +1,50 @@
+﻿using System;
+using GlobalLighting.Core;
+using GlobalLighting.Material;
+
+namespace GlobalLighting.Surfaces
+{
+	public class Sphere : IGeometry
+	{
+		public Sphere(double r, Vector center, IMaterial material)
+		{
+			this.r = r;
+			this.center = center;
+			this.material = material;
+		}
+
+		public HitPoint Intersect(Vector start, Vector direction)
+		{
+			Vector ac = start - center;
+
+			double b = ac.DotProduct(direction);
+			double c = ac.SquareOfLength() - r * r;
+
+			double D = b * b - c;
+
+			if (D < 0)
+			{
+				return null;
+			}
+
+			D = Math.Sqrt(D);
+			double t = -b - D;
+
+			if (t < double.Epsilon)
+			{
+				t = -b + D;
+
+				if (t < double.Epsilon)
+				{
+					return null;
+				}
+			}
+
+			return new HitPoint((start + t * direction - center) / r, t, material);
+		}
+
+		private double r;
+		private Vector center;
+		private IMaterial material;
+	}
+}
